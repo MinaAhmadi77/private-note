@@ -159,10 +159,17 @@
         <div class="card">
             <h4><svg class="icon" aria-hidden="true">
                     <use xlink:href="#icon-coffee" href="#icon-coffee" />
-                </svg>Your about to read and destroy your note: {{content}}</h4>
+                </svg>Your about to read and destroy your note: {{id}}</h4>
             <div class="button-group">
-                <button style="background-color: red">Yes, show me the note</button>
-                <button type="cancel" style="background-color: gray">No, not now</button>
+
+                <form action="/showNotePage" method="post">
+                    <button name="btn" style="background-color: red" value={{id}}>Yes, show me the note</button>
+
+                </form>
+
+                <form action="/">
+                    <button type="cancel" style="background-color: gray">No, not now</button>
+                </form>
             </div>
         </div>
         </svg>

@@ -17,7 +17,7 @@ try:
             print(data)
 except:
 
-    data['expiretime']= 10
+    data['expiretime']= 5
     data['port'] = 8000
     data['DBusername'] = "mina412"
     data['DBpassword'] = "minaahmadi77"
@@ -39,9 +39,25 @@ def typeNote():
     note= request.form['note'] 
     url = random_func()
     notes.insert_one({"id":url,"time":datetime.today(),"note":note,"available":True})
-    return render_template("createUrl.html",note="127.0.0.1:5000/notePage/"+url,url=url)
+    return render_template("createUrl.html",note="127.0.0.1:5000/warningPage/"+url,url=url)
+    
+@app.route("/warningPage/<id>",methods=["GET"])
+def warningPage(id):
 
+    note = notes.find_one({"id":id})
+    if(note['available']) == True:
+        spend = (datetime.now() - note['time']).total_seconds()
+        if (spend > data['expiretime'] * 60):
+            notes.update_one({"id":id},{ "$set": { 'available': False } })
+            return "404 not found"
+        return render_template("warning_page.html", id = id)
 
+@app.route("/showNotePage",methods=["POST"])
+def showNotePage():
+    id = request.form['btn'] # TODO ino bayad doros konim------------------------------
+    notes.update_one({"id":id},{ "$set": { 'available': False } })
+    print("ineeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", id)
+    return render_template("show_note_page.html", text = notes.find_one({"id":id})['note'])
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
