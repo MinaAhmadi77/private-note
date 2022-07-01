@@ -117,7 +117,7 @@
         }
 
         button {
-            color: currentColor;
+            background-color: red;
             padding: var(--size-bezel) calc(var(--size-bezel) * 2);
             background: var(--color-accent);
             border: none;
@@ -125,9 +125,13 @@
             font-weight: 900;
         }
 
-        button[type=reset] {
-            background: var(--color-background);
-            font-weight: 200;
+        button[type=cancel] {
+            background-color: gray;
+            padding: var(--size-bezel) calc(var(--size-bezel) * 2);
+            background: var(--color-accent);
+            border: none;
+            border-radius: var(--size-radius);
+            font-weight: 900;
         }
 
         button+button {
@@ -153,12 +157,12 @@
         <h1>Private Note</h1>
 
         <div class="card">
-            <h2><svg class="icon" aria-hidden="true">
+            <h4><svg class="icon" aria-hidden="true">
                     <use xlink:href="#icon-coffee" href="#icon-coffee" />
-                </svg>Your link</h2>
-            <label class="input">
-                <input class="input__field" type="text" placeholder=" " value={{note}} />
-                <span class="input__label">Link to your note: </span>
-            </label>
+                </svg>Your about to read and destroy your note: {{content}}</h4>
+            <div class="button-group">
+                <button style="background-color: red">Yes, show me the note</button>
+                <button type="cancel" style="background-color: gray">No, not now</button>
+            </div>
         </div>
         </svg>

@@ -155,10 +155,17 @@
         <div class="card">
             <h2><svg class="icon" aria-hidden="true">
                     <use xlink:href="#icon-coffee" href="#icon-coffee" />
-                </svg>Your link</h2>
-            <label class="input">
-                <input class="input__field" type="text" placeholder=" " value={{note}} />
-                <span class="input__label">Link to your note: </span>
-            </label>
+                </svg>You can enter your private note here.</h2>
+
+            <form action="/typeNote" method="post">
+                <label class="input">
+                    <textarea name="note" class="input__field" id="text_area" type="text" placeholder=" " rows="3"></textarea>
+                    <span class="input__label">Enter your note</span>
+                </label>
+                <div class="button-group">
+                    <button id="creat_note" type="submit">Creat Note</button>
+                </div>
+
+            </form>
         </div>
         </svg>
