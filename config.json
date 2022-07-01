@@ -1,8 +1,8 @@
 {
-    "expiretime": 5,
+    "minutes_to_expire": 5,
     "port": 8000,
-    "DBusername": "mina412",
-    "DBpassword": "minaahmadi77",
-    "DBurl": "@project.itbja.mongodb.net/?retryWrites=true&w=majority"
+    "user": "mina412",
+    "pass": "minaahmadi77",
+    "url": "@project.itbja.mongodb.net/?retryWrites=true&w=majority"
 }
   
